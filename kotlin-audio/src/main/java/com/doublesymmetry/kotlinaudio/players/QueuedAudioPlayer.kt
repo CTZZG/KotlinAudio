@@ -1,5 +1,6 @@
 package com.doublesymmetry.kotlinaudio.players
 
+import com.google.android.exoplayer2.RenderersFactory
 import android.content.Context
 import com.doublesymmetry.kotlinaudio.models.*
 import com.doublesymmetry.kotlinaudio.players.components.getAudioItemHolder
@@ -14,8 +15,10 @@ class QueuedAudioPlayer(
     context: Context,
     playerConfig: PlayerConfig = PlayerConfig(),
     bufferConfig: BufferConfig? = null,
-    cacheConfig: CacheConfig? = null
-) : BaseAudioPlayer(context, playerConfig, bufferConfig, cacheConfig) {
+    cacheConfig: CacheConfig? = null,
+    // 新增参数
+    renderersFactory: com.google.android.exoplayer2.RenderersFactory? = null
+) : BaseAudioPlayer(context, playerConfig, bufferConfig, cacheConfig, renderersFactory) {
     private val queue = LinkedList<MediaSource>()
     override val playerOptions = DefaultQueuedPlayerOptions(exoPlayer)
 
