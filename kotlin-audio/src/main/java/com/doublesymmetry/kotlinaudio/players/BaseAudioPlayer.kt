@@ -1,5 +1,6 @@
 package com.doublesymmetry.kotlinaudio.players
 
+import com.google.android.exoplayer2.RenderersFactory
 import android.content.Context
 import android.media.AudioManager
 import android.media.AudioManager.AUDIOFOCUS_LOSS
@@ -83,7 +84,9 @@ abstract class BaseAudioPlayer internal constructor(
     internal val context: Context,
     playerConfig: PlayerConfig,
     private val bufferConfig: BufferConfig?,
-    private val cacheConfig: CacheConfig?
+    private val cacheConfig: CacheConfig?,
+    // 新增参数，允许外部传入 RenderersFactory，默认为 null
+    private val renderersFactoryFromApp: com.google.android.exoplayer2.RenderersFactory? = null
 ) : AudioManager.OnAudioFocusChangeListener {
     protected val exoPlayer: ExoPlayer
 
@@ -230,6 +233,8 @@ abstract class BaseAudioPlayer internal constructor(
             )
             .apply {
                 if (bufferConfig != null) setLoadControl(setupBuffer(bufferConfig))
+                // 如果外部传入了 renderersFactory，则使用它
+                renderersFactoryFromApp?.let { setRenderersFactory(it) }
             }
             .build()
 
