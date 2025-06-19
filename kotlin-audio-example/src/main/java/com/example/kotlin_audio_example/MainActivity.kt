@@ -48,6 +48,7 @@ import kotlinx.coroutines.flow.onEach
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
 import kotlin.time.Duration.Companion.seconds
+import com.google.android.exoplayer2.DefaultRenderersFactory
 
 class MainActivity : ComponentActivity() {
     private lateinit var player: QueuedAudioPlayer
@@ -57,12 +58,18 @@ class MainActivity : ComponentActivity() {
         Timber.plant(Timber.DebugTree())
         super.onCreate(savedInstanceState)
 
+        val renderersFactory = DefaultRenderersFactory(this).apply {
+            // 启用扩展渲染器，这样 FFmpegAudioRenderer 才能被使用
+            setExtensionRendererMode(DefaultRenderersFactory.EXTENSION_RENDERER_MODE_ON)
+        }
+        
         player = QueuedAudioPlayer(
             this, playerConfig = PlayerConfig(
                 interceptPlayerActionsTriggeredExternally = true,
                 handleAudioBecomingNoisy = true,
                 handleAudioFocus = true
-            )
+            ),
+            renderersFactory = renderersFactory
         )
         player.add(tracks)
         player.playerOptions.repeatMode = RepeatMode.ALL
