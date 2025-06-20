@@ -523,7 +523,6 @@ abstract class BaseAudioPlayer internal constructor(
         return ProgressiveMediaSource.Factory(
             // factory, DefaultExtractorsFactory()
             factory, extractorsFactory
-                .setConstantBitrateSeekingEnabled(true)
         )
             .createMediaSource(mediaItem)
     }
