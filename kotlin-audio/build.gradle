@@ -42,14 +42,14 @@ dependencies {
     implementation 'io.coil-kt:coil:2.2.0'
     implementation 'androidx.media:media:1.6.0'
     
-    api 'com.github.CTZZG.jellyfin-androidx-media:exoplayer-core:2.19.1+1'
-    api 'com.github.CTZZG.jellyfin-androidx-media:exoplayer-extractor:2.19.1+1'
-    api 'com.github.CTZZG.jellyfin-androidx-media:exoplayer-ui:2.19.1+1'
-    api 'com.github.CTZZG.jellyfin-androidx-media:exoplayer-dash:2.19.1+1'
-    api 'com.github.CTZZG.jellyfin-androidx-media:exoplayer-hls:2.19.1+1'
-    api 'com.github.CTZZG.jellyfin-androidx-media:exoplayer-smoothstreaming:2.19.1+1'
-    api 'com.github.CTZZG.jellyfin-androidx-media:extension-mediasession:2.19.1+1'
-    api 'com.github.CTZZG.jellyfin-androidx-media:exoplayer-ffmpeg-extension:2.19.1+1'
+    api 'com.github.CTZZG.jellyfin-androidx-media:exoplayer-core:v2.19.1'
+    api 'com.github.CTZZG.jellyfin-androidx-media:exoplayer-extractor:v2.19.1'
+    api 'com.github.CTZZG.jellyfin-androidx-media:exoplayer-ui:v2.19.1'
+    api 'com.github.CTZZG.jellyfin-androidx-media:exoplayer-dash:v2.19.1'
+    api 'com.github.CTZZG.jellyfin-androidx-media:exoplayer-hls:v2.19.1'
+    api 'com.github.CTZZG.jellyfin-androidx-media:exoplayer-smoothstreaming:v2.19.1'
+    api 'com.github.CTZZG.jellyfin-androidx-media:extension-mediasession:v2.19.1'
+    api 'com.github.CTZZG.jellyfin-androidx-media:exoplayer-ffmpeg-extension:v2.19.1'
     
     api 'com.jakewharton.timber:timber:5.0.1'
 
