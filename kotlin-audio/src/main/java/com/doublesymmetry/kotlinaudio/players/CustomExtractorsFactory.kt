@@ -6,10 +6,14 @@ import com.google.android.exoplayer2.extractor.ExtractorsFactory
 import com.google.android.exoplayer2.ext.ffmpeg.FfmpegExtractor
 import com.google.android.exoplayer2.ext.ffmpeg.FfmpegLibrary
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory
+import timber.log.Timber
 import java.util.Collections
 
 class CustomExtractorsFactory : ExtractorsFactory {
-    private val defaultExtractorsFactory = DefaultExtractorsFactory()
+    private val defaultExtractorsFactory = DefaultExtractorsFactory().apply {
+        setConstantBitrateSeekingEnabled(true)
+        setConstantBitrateSeekingAlwaysEnabled(true)
+    }
 
     override fun createExtractors(): Array<Extractor> {
         return createExtractors(Uri.EMPTY, emptyMap())
@@ -22,11 +26,11 @@ class CustomExtractorsFactory : ExtractorsFactory {
         val extractors = ArrayList<Extractor>()
 
         try {
-            if (com.google.android.exoplayer2.ext.ffmpeg.FfmpegLibrary.isAvailable()) {
+            if (FfmpegLibrary.isAvailable()) {
               extractors.add(FfmpegExtractor())
             }
         } catch (e: Exception) {
-            android.util.Log.e("CustomExtractorsFactory", "Failed to add FfmpegExtractor", e)
+            Timber.e(e, "Failed to add FfmpegExtractor to CustomExtractorsFactory")
         }
 
         Collections.addAll(extractors, *defaultExtractorsFactory.createExtractors(uri, responseHeaders))
