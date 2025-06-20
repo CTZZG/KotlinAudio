@@ -37,6 +37,7 @@ import com.doublesymmetry.kotlinaudio.models.PlayerOptions
 import com.doublesymmetry.kotlinaudio.models.PositionChangedReason
 import com.doublesymmetry.kotlinaudio.models.WakeMode
 import com.doublesymmetry.kotlinaudio.notification.NotificationManager
+import com.doublesymmetry.kotlinaudio.players.CustomExtractorsFactory
 import com.doublesymmetry.kotlinaudio.players.components.PlayerCache
 import com.doublesymmetry.kotlinaudio.players.components.getAudioItemHolder
 import com.doublesymmetry.kotlinaudio.utils.isUriLocalFile
@@ -493,7 +494,8 @@ abstract class BaseAudioPlayer internal constructor(
             MediaType.DASH -> createDashSource(mediaItem, factory)
             MediaType.HLS -> createHlsSource(mediaItem, factory)
             MediaType.SMOOTH_STREAMING -> createSsSource(mediaItem, factory)
-            else -> createProgressiveSource(mediaItem, factory)
+            // else -> createProgressiveSource(mediaItem, factory)
+            else -> createProgressiveSource(mediaItem, factory, CustomExtractorsFactory())
         }
     }
 
@@ -515,9 +517,11 @@ abstract class BaseAudioPlayer internal constructor(
     private fun createProgressiveSource(
         mediaItem: MediaItem,
         factory: DataSource.Factory
+        extractorsFactory: ExtractorsFactory
     ): ProgressiveMediaSource {
         return ProgressiveMediaSource.Factory(
-            factory, DefaultExtractorsFactory()
+            // factory, DefaultExtractorsFactory()
+            factory, extractorsFactory
                 .setConstantBitrateSeekingEnabled(true)
         )
             .createMediaSource(mediaItem)
