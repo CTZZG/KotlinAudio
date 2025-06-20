@@ -28,6 +28,8 @@ class CustomExtractorsFactory : ExtractorsFactory {
         try {
             if (FfmpegLibrary.isAvailable()) {
               extractors.add(FfmpegExtractor())
+            } else {
+                Timber.w("FfmpegLibrary not available, FfmpegExtractor not added.")
             }
         } catch (e: Exception) {
             Timber.e(e, "Failed to add FfmpegExtractor to CustomExtractorsFactory")
