@@ -41,8 +41,15 @@ android {
 dependencies {
     implementation 'io.coil-kt:coil:2.2.0'
     implementation 'androidx.media:media:1.6.0'
-    api 'com.google.android.exoplayer:exoplayer:2.19.0'
-    api 'com.google.android.exoplayer:extension-mediasession:2.19.0'
+    
+    api 'com.google.android.exoplayer:exoplayer-core:2.19.1'
+    api 'com.google.android.exoplayer:exoplayer-extractor:2.19.1'
+    api 'com.google.android.exoplayer:exoplayer-ui:2.19.1'
+    api 'com.google.android.exoplayer:exoplayer-dash:2.19.1'
+    api 'com.google.android.exoplayer:exoplayer-hls:2.19.1'
+    api 'com.google.android.exoplayer:exoplayer-smoothstreaming:2.19.1'
+    api 'com.google.android.exoplayer:extension-mediasession:2.19.1'
+    
     api 'com.jakewharton.timber:timber:5.0.1'
     api files('libs/exoplayer-extension-ffmpeg-release.aar')
 
