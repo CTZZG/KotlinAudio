@@ -516,7 +516,7 @@ abstract class BaseAudioPlayer internal constructor(
 
     private fun createProgressiveSource(
         mediaItem: MediaItem,
-        factory: DataSource.Factory
+        factory: DataSource.Factory,
         extractorsFactory: ExtractorsFactory
     ): ProgressiveMediaSource {
         return ProgressiveMediaSource.Factory(
