@@ -4,6 +4,7 @@ import android.net.Uri
 import com.google.android.exoplayer2.extractor.Extractor
 import com.google.android.exoplayer2.extractor.ExtractorsFactory
 import com.google.android.exoplayer2.ext.ffmpeg.FfmpegExtractor
+import com.google.android.exoplayer2.ext.ffmpeg.FfmpegLibrary
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory
 import java.util.Collections
 
